@@ -48,9 +48,9 @@ export default function AdminLoginPage() {
         {/* Logo */}
         <div className="text-center mb-8">
           <img
-            src="https://res.cloudinary.com/dv6kefwup/image/upload/v1749480604/Thanhlam/logo-thanh-lam.png"
+            src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-6/493265605_1121960836612873_6860252367510119265_n.jpg?stp=dst-jpg_tt6&cstp=mx1422x1422&ctp=s1422x1422&_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=t6nol4hYVYIQ7kNvwG8pcq0&_nc_oc=AdquBvtOxoqJW7NHc_R2ZehxhVf_TSZpgk96iBAcU7rQ1fbNYoLuDsAYzr_nqIRmXww&_nc_zt=23&_nc_ht=scontent.fsgn2-7.fna&_nc_gid=OsQkcfvAuoIGfJMI598HAQ&_nc_ss=7b2a8&oh=00_Af9MWmWAzHhbPPTrzx7RmwpVHUVg3MM9aePF5mtD_lurjA&oe=6A2C8822"
             alt="Thanh Lam Store"
-            className="h-16 w-auto mx-auto brightness-0 invert mb-4"
+            className="h-16 w-auto mx-auto mb-4"
           />
           <h1 className="text-2xl font-bold text-text">Admin Dashboard</h1>
           <p className="text-sm text-text-secondary mt-1">Khu vực quản trị riêng tư - THANH LÂM STORE</p>

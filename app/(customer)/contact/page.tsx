@@ -13,9 +13,9 @@ import { contactSchema, type ContactFormData } from "@/lib/validations";
 import { useToast } from "@/hooks/use-toast";
 
 const contactInfo = [
-  { icon: MapPin, label: "Địa chỉ", value: "123 Đường ABC, Quận 1, TP. Hồ Chí Minh" },
-  { icon: Phone, label: "Điện thoại", value: "0909 123 456" },
-  { icon: Mail, label: "Email", value: "contact@thanhlamshop.vn" },
+  { icon: MapPin, label: "Địa chỉ", value: "Chợ Cảnh Dương, Hòa Trạch, Quảng Trị" },
+  { icon: Phone, label: "Điện thoại", value: "094 868 84 70" },
+  { icon: Mail, label: "Email", value: "thanhlamstorevn@gmail.com" },
   { icon: Clock, label: "Giờ làm việc", value: "8:00 - 21:00 (T2 - CN)" },
 ];
 

@@ -24,7 +24,7 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { label: "Facebook", href: "#", icon: Facebook },
+  { label: "Facebook", href: "https://www.facebook.com/thanhlamstore.vn", icon: Facebook },
   { label: "Instagram", href: "#", icon: Instagram },
   { label: "Youtube", href: "#", icon: Youtube },
 ];
@@ -38,9 +38,9 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-4">
               <img
-                src="https://res.cloudinary.com/dv6kefwup/image/upload/v1749480604/Thanhlam/logo-thanh-lam.png"
+                src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-6/493265605_1121960836612873_6860252367510119265_n.jpg?stp=dst-jpg_tt6&cstp=mx1422x1422&ctp=s1422x1422&_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=t6nol4hYVYIQ7kNvwG8pcq0&_nc_oc=AdquBvtOxoqJW7NHc_R2ZehxhVf_TSZpgk96iBAcU7rQ1fbNYoLuDsAYzr_nqIRmXww&_nc_zt=23&_nc_ht=scontent.fsgn2-7.fna&_nc_gid=OsQkcfvAuoIGfJMI598HAQ&_nc_ss=7b2a8&oh=00_Af9MWmWAzHhbPPTrzx7RmwpVHUVg3MM9aePF5mtD_lurjA&oe=6A2C8822"
                 alt={SITE_NAME}
-                className="h-12 w-auto brightness-0 invert"
+                className="h-12 w-auto"
               />
             </Link>
             <p className="text-sm text-text-secondary leading-relaxed mb-4">
@@ -118,18 +118,18 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm text-text-secondary">
                 <MapPin className="w-4 h-4 mt-0.5 text-accent shrink-0" />
-                <span>123 Đường ABC, Quận 1, TP. Hồ Chí Minh</span>
+                <span>Chợ Cảnh Dương, Hòa Trạch, Quảng Trị</span>
               </li>
               <li className="flex items-center gap-2 text-sm text-text-secondary">
                 <Phone className="w-4 h-4 text-accent shrink-0" />
-                <a href="tel:0909123456" className="hover:text-accent transition-colors">
-                  0909 123 456
+                <a href="tel:0948688470" className="hover:text-accent transition-colors">
+                  094 868 84 70
                 </a>
               </li>
               <li className="flex items-center gap-2 text-sm text-text-secondary">
                 <Mail className="w-4 h-4 text-accent shrink-0" />
-                <a href="mailto:contact@thanhlamshop.vn" className="hover:text-accent transition-colors">
-                  contact@thanhlamshop.vn
+                <a href="mailto:thanhlamstorevn@gmail.com" className="hover:text-accent transition-colors">
+                  thanhlamstorevn@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-2 text-sm text-text-secondary">

@@ -276,8 +276,8 @@ async function main() {
   await prisma.contact.create({
     data: {
       name: "Nguyễn Văn Demo",
-      email: "demo@thanhlamshop.vn",
-      phone: "0909123456",
+      email: "demo@thanhlamsvn@gmail.com",
+      phone: "0948688470",
       subject: "Tin nhắn mẫu",
       message: "Chào cửa hàng, tôi muốn biết thêm về các sản phẩm giày Nike hiện có.",
     },

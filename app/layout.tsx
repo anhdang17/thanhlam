@@ -1,0 +1,60 @@
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { Header } from "@/components/shared/Header";
+import { Footer } from "@/components/shared/Footer";
+import { Toaster } from "@/components/shared/toaster";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
+  title: {
+    default: "THANH LÂM STORE | Thời Trang Nam Cao Cấp",
+    template: "%s | THANH LÂM STORE",
+  },
+  description:
+    "Chuyên cung cấp các sản phẩm thời trang nam cao cấp: giày, dép, balo, vali, phụ kiện. Chất lượng - Uy tín - Tận tâm.",
+  keywords: ["thời trang nam", "giày nam", "balo nam", "vali nam", "phụ kiện nam", "thanh lam store"],
+  authors: [{ name: "THANH LÂM STORE" }],
+  creator: "THANH LÂM STORE",
+  openGraph: {
+    type: "website",
+    locale: "vi_VN",
+    url: "/",
+    siteName: "THANH LÂM STORE",
+    title: "THANH LÂM STORE | Thời Trang Nam Cao Cấp",
+    description:
+      "Chuyên cung cấp các sản phẩm thời trang nam cao cấp: giày, dép, balo, vali, phụ kiện.",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "THANH LÂM STORE | Thời Trang Nam Cao Cấp",
+    description:
+      "Chuyên cung cấp các sản phẩm thời trang nam cao cấp: giày, dép, balo, vali, phụ kiện.",
+    images: ["/og-image.jpg"],
+  },
+  robots: { index: true, follow: true },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="vi" className="dark">
+      <body className={`${inter.variable} font-sans`}>
+        <Header />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
+        <Toaster />
+      </body>
+    </html>
+  );
+}

@@ -1,22 +1,27 @@
-import type { Metadata } from "next";
 import { HeroSection } from "./_components/HeroSection";
 import { FeaturedCategories } from "./_components/FeaturedCategories";
 import { FeaturedProducts } from "./_components/FeaturedProducts";
 import { LookbookSection } from "./_components/LookbookSection";
 import { WhyChooseUs } from "./_components/WhyChooseUs";
+import { getFeaturedProducts, getAllCategories, getActiveBanners } from "@/lib/actions";
 
-export const metadata: Metadata = {
-  title: "THANH LÂM STORE | Thời Trang Nam Cao Cấp",
-  description:
-    "Chuyên cung cấp các sản phẩm thời trang nam cao cấp: giày, dép, balo, vali, phụ kiện. Chất lượng - Uy tín - Tận tâm phục vụ.",
-};
+export const dynamic = "force-dynamic";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [featuredProducts, categories, banners] = await Promise.all([
+    getFeaturedProducts(8),
+    getAllCategories(),
+    getActiveBanners(),
+  ]);
+
+  const featuredCategories = categories.filter((c) => c.isFeatured).slice(0, 8);
+  const heroBanner = banners[0];
+
   return (
     <>
-      <HeroSection />
-      <FeaturedCategories />
-      <FeaturedProducts />
+      <HeroSection banner={heroBanner} />
+      <FeaturedCategories categories={featuredCategories} />
+      <FeaturedProducts products={featuredProducts} />
       <LookbookSection />
       <WhyChooseUs />
     </>

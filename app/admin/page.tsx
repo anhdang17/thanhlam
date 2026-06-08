@@ -1,35 +1,29 @@
-"use client";
-
-import { Package, Layers, Tag, MessageSquare, TrendingUp, Eye, Clock } from "lucide-react";
+import { Package, Layers, Tag, MessageSquare, TrendingUp, Eye } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/shared/ui/card";
 import { formatPrice } from "@/lib/utils";
+import { getDashboardStats, getRecentContacts, getTopProducts } from "@/lib/actions";
 
-const stats = [
-  { label: "Tổng sản phẩm", value: "32", icon: Package, color: "text-blue-400", bg: "bg-blue-400/10" },
-  { label: "Danh mục", value: "8", icon: Layers, color: "text-green-400", bg: "bg-green-400/10" },
-  { label: "Thương hiệu", value: "12", icon: Tag, color: "text-purple-400", bg: "bg-purple-400/10" },
-  { label: "Liên hệ mới", value: "3", icon: MessageSquare, color: "text-orange-400", bg: "bg-orange-400/10" },
-];
+export const dynamic = "force-dynamic";
 
-const recentContacts = [
-  { id: "1", name: "Nguyễn Văn A", email: "vana@email.com", message: "Tôi muốn biết về giày Nike Air Max 90...", time: "2 giờ trước", isRead: false },
-  { id: "2", name: "Trần Văn B", email: "vanb@email.com", message: "Có giao hàng ra Hà Nội không?", time: "5 giờ trước", isRead: false },
-  { id: "3", name: "Lê Văn C", email: "vanc@email.com", message: "Dép Biti's có size 43 không?", time: "1 ngày trước", isRead: true },
-];
+export default async function AdminDashboardPage() {
+  const [stats, recentContacts, topProducts] = await Promise.all([
+    getDashboardStats(),
+    getRecentContacts(5),
+    getTopProducts(5),
+  ]);
 
-const topProducts = [
-  { name: "Giày Nike Air Max 90", views: 1240, revenue: 3500000 },
-  { name: "Giày Adidas Ultraboost 23", views: 980, revenue: 4800000 },
-  { name: "Balo Laptop Pro 15 inch", views: 756, revenue: 890000 },
-  { name: "Vali Du Lịch Nhựa ABS", views: 623, revenue: 1800000 },
-];
+  const dashboardStats = [
+    { label: "Tổng sản phẩm", value: stats.productCount, icon: Package, color: "text-blue-400", bg: "bg-blue-400/10" },
+    { label: "Danh mục", value: stats.categoryCount, icon: Layers, color: "text-green-400", bg: "bg-green-400/10" },
+    { label: "Thương hiệu", value: stats.brandCount, icon: Tag, color: "text-purple-400", bg: "bg-purple-400/10" },
+    { label: "Liên hệ mới", value: stats.unreadCount, icon: MessageSquare, color: "text-orange-400", bg: "bg-orange-400/10" },
+  ];
 
-export default function AdminDashboardPage() {
   return (
     <div className="space-y-8">
       {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {stats.map((stat) => (
+        {dashboardStats.map((stat) => (
           <Card key={stat.label} className="bg-card border-border">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-3">
@@ -70,10 +64,15 @@ export default function AdminDashboardPage() {
                     )}
                   </div>
                   <p className="text-xs text-text-secondary truncate mt-0.5">{contact.message}</p>
-                  <p className="text-xs text-text-secondary/60 mt-1">{contact.time}</p>
+                  <p className="text-xs text-text-secondary/60 mt-1">
+                    {new Date(contact.createdAt).toLocaleDateString("vi-VN")}
+                  </p>
                 </div>
               </div>
             ))}
+            {recentContacts.length === 0 && (
+              <p className="text-sm text-text-secondary text-center py-4">Chưa có liên hệ nào.</p>
+            )}
           </CardContent>
         </Card>
 
@@ -88,7 +87,7 @@ export default function AdminDashboardPage() {
           <CardContent className="space-y-4">
             {topProducts.map((product, index) => (
               <div
-                key={product.name}
+                key={product.id}
                 className="flex items-center gap-4 p-3 rounded-lg bg-background-secondary/50"
               >
                 <span className="w-6 h-6 rounded-md bg-accent/10 flex items-center justify-center text-xs font-bold text-accent shrink-0">
@@ -99,15 +98,20 @@ export default function AdminDashboardPage() {
                   <div className="flex items-center gap-3 mt-1">
                     <span className="flex items-center gap-1 text-xs text-text-secondary">
                       <Eye className="w-3 h-3" />
-                      {product.views}
+                      {product.viewCount}
                     </span>
-                    <span className="text-xs font-medium text-green-400">
-                      {formatPrice(product.revenue)}
-                    </span>
+                    {product.price && (
+                      <span className="text-xs font-medium text-green-400">
+                        {formatPrice(product.price)}
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
             ))}
+            {topProducts.length === 0 && (
+              <p className="text-sm text-text-secondary text-center py-4">Chưa có sản phẩm nào.</p>
+            )}
           </CardContent>
         </Card>
       </div>

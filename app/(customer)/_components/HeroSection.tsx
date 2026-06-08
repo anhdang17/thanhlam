@@ -6,13 +6,28 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/shared/ui/button";
 
-export function HeroSection() {
+interface HeroSectionProps {
+  banner?: {
+    title: string;
+    subtitle?: string | null;
+    image: string;
+    link?: string | null;
+    linkText?: string | null;
+  };
+}
+
+export function HeroSection({ banner }: HeroSectionProps) {
+  const src = banner?.image || "https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=1920&q=80";
+  const title = banner?.title || "Phong cách nam tính hiện đại";
+  const subtitle = banner?.subtitle || "Bộ sưu tập thời trang nam cao cấp 2026";
+  const link = banner?.link || "/products";
+  const linkText = banner?.linkText || "Khám phá ngay";
+
   return (
     <section className="relative min-h-[85vh] flex items-center overflow-hidden">
-      {/* Background */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=1920&q=80"
+          src={src}
           alt="Fashion background"
           fill
           priority
@@ -22,7 +37,6 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
       </div>
 
-      {/* Content */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-20">
         <div className="max-w-2xl">
           <motion.div
@@ -42,19 +56,10 @@ export function HeroSection() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6"
           >
-            Phong cách
+            {title}
             <br />
-            <span className="text-accent">Nam tính</span> hiện đại
+            <span className="text-accent">{subtitle}</span>
           </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg md:text-xl text-white/70 mb-8 max-w-lg"
-          >
-            Khám phá bộ sưu tập thời trang nam cao cấp. Chất lượng vượt trội, thiết kế tinh tế cho người đàn ông hiện đại.
-          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -62,9 +67,9 @@ export function HeroSection() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="flex flex-wrap gap-4"
           >
-            <Link href="/products">
+            <Link href={link}>
               <Button size="xl" className="gap-2">
-                Khám phá ngay
+                {linkText}
                 <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>
@@ -75,7 +80,6 @@ export function HeroSection() {
             </Link>
           </motion.div>
 
-          {/* Stats */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

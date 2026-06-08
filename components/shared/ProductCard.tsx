@@ -12,9 +12,9 @@ interface ProductCardProps {
   name: string;
   price: number | string | null;
   originalPrice?: number | string | null;
-  image: string;
-  category?: string;
-  brand?: string;
+  image: string | null;
+  category?: string | { name: string } | null;
+  brand?: string | { name: string } | null;
   isFeatured?: boolean;
   className?: string;
 }
@@ -36,6 +36,9 @@ export function ProductCard({
     ? Math.round((1 - Number(price) / Number(originalPrice)) * 100)
     : 0;
 
+  const categoryName = typeof category === "string" ? category : category?.name;
+  const brandName = typeof brand === "string" ? brand : brand?.name;
+
   return (
     <motion.div
       whileHover={{ y: -4 }}
@@ -47,7 +50,7 @@ export function ProductCard({
           {/* Image */}
           <div className="relative aspect-[3/4] overflow-hidden">
             <Image
-              src={image || "/placeholder.jpg"}
+              src={image || "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80"}
               alt={name}
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -81,9 +84,9 @@ export function ProductCard({
 
           {/* Info */}
           <div className="p-4">
-            {(category || brand) && (
+            {(categoryName || brandName) && (
               <p className="text-[11px] font-medium text-accent uppercase tracking-wider mb-1">
-                {brand || category}
+                {brandName || categoryName}
               </p>
             )}
             <h3 className="text-sm font-medium text-text line-clamp-2 leading-snug mb-2 group-hover:text-accent transition-colors">

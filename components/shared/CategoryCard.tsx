@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 interface CategoryCardProps {
   name: string;
   slug: string;
-  image: string;
+  image?: string | null;
   productCount?: number;
   className?: string;
 }
@@ -29,7 +29,7 @@ export function CategoryCard({
       <Link href={`/products?category=${slug}`} className="block">
         <div className="relative overflow-hidden rounded-lg aspect-square bg-card border border-border shadow-card hover:shadow-card-hover transition-all duration-300">
           <Image
-            src={image || "/placeholder.jpg"}
+            src={image || "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80"}
             alt={name}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-110"

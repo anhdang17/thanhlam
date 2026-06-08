@@ -117,7 +117,7 @@ export default function AdminLoginPage() {
           </CardContent>
         </Card>
 
-        <p className="text-center text-xs text-text-secondary/50 mt-6">
+        <p className="text-center text-xs text-text-secondary/50 mt-6" suppressHydrationWarning>
           © {new Date().getFullYear()} THANH LÂM STORE. All rights reserved.
         </p>
       </div>

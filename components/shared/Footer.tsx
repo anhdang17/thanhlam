@@ -143,12 +143,12 @@ export function Footer() {
         <Separator className="my-8 bg-border/50" />
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-text-secondary">
+          <p className="text-sm text-text-secondary" suppressHydrationWarning>
             &copy; {new Date().getFullYear()} {SITE_NAME}. Tất cả quyền được bảo lưu.
           </p>
           <div className="flex items-center gap-1">
             <span className="text-xs text-text-secondary/60">Developed by</span>
-            <span className="text-xs text-accent font-medium">THANH LÂM STORE</span>
+            <span className="text-xs text-accent font-medium">Lê Hải Đăng</span>
           </div>
         </div>
       </div>

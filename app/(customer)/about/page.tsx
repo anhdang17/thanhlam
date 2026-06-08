@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { CheckCircle, Users, Award, Heart } from "lucide-react";
 import { Separator } from "@/components/shared/ui/separator";
 
